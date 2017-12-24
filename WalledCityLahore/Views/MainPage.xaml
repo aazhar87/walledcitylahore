@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    prism:ViewModelLocator.AutowireViewModel="True" 
+    xmlns:Controls="clr-namespace:WalledCityLahore.Widgets;assembly=WalledCityLahore" 
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+    x:Class="WalledCityLahore.Views.MainPage" BackgroundColor="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" BackgroundColor="{StaticResource PrimaryColor}">
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness" Android="10, 0, 10, 0" iOS="10, 20, 10, 0" />
+            </Grid.Padding>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Label FontSize="20" FontAttributes="None" Text="Walled City Lahore" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" 
+                WidthRequest="20" Padding="20,10,7,10"
+                HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                <Image Source="img_dots.png"
+                    HeightRequest="15" WidthRequest="5" Aspect="AspectFit" 
+                    HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClickOptionsMenu" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </Grid>
+        <!--  Top Bar End  -->
+        <Grid Grid.Row="1" RowSpacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*" />
+                <RowDefinition Height="2.5*" />
+                <RowDefinition Height="2.5*" />
+                <RowDefinition Height="2.5*" />
+            </Grid.RowDefinitions>
+
+            <RelativeLayout Grid.Row="0">
+                <ffimageloading:CachedImage Aspect="AspectFill" Source="img_bookings_banner.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+                <StackLayout Orientation="Vertical" Padding="5" Spacing="0" HeightRequest="30" BackgroundColor="#99fee61f" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                    <Label Text="Tours" TextColor="White" FontSize="20" FontFamily="Arial" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnBookingsClicked}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <RelativeLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnBookingsClicked}" />
+                </RelativeLayout.GestureRecognizers>
+            </RelativeLayout>
+
+            <RelativeLayout Grid.Row="1">
+                <ffimageloading:CachedImage Aspect="AspectFill" Source="img_restaurant_banner.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+                <StackLayout Orientation="Vertical" Padding="5" Spacing="0" HeightRequest="30" BackgroundColor="#99006442" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                    <Label Text="Restaurants" TextColor="White" FontSize="20" FontFamily="Arial" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnRestaurantsClicked}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <RelativeLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnRestaurantsClicked}" />
+                </RelativeLayout.GestureRecognizers>
+            </RelativeLayout>
+
+            <RelativeLayout Grid.Row="2">
+                <ffimageloading:CachedImage Aspect="AspectFill" Source="img_bg_attraction.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+                <StackLayout Orientation="Vertical" Padding="5" Spacing="0" HeightRequest="30" BackgroundColor="#9947a0d9" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                    <Label Text="Attractions" TextColor="White" FontSize="20" FontFamily="Arial" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnAttractionsClicked}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <RelativeLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnAttractionsClicked}" />
+                </RelativeLayout.GestureRecognizers>
+            </RelativeLayout>
+
+            <RelativeLayout Grid.Row="3">
+                <ffimageloading:CachedImage Aspect="AspectFill" Source="img_events.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+                <StackLayout Orientation="Vertical" Padding="5" Spacing="0" HeightRequest="30" BackgroundColor="#99fe1fc7" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                    <Label Text="Events" TextColor="White" FontSize="20" FontFamily="Arial" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnEventsClicked}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <RelativeLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnEventsClicked}" />
+                </RelativeLayout.GestureRecognizers>
+            </RelativeLayout>
+
+           
+        </Grid>
+    </Grid>
+</ContentPage>

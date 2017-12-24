@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    prism:ViewModelLocator.AutowireViewModel="True" 
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:Controls="clr-namespace:WalledCityLahore.Widgets;assembly=WalledCityLahore" 
+    x:Class="WalledCityLahore.Views.RestaurantDetailPage" 
+    BackgroundColor="White">
+    <Grid BackgroundColor="White">
+        <StackLayout Spacing="0" BackgroundColor="White">
+            <!--  Top Bar Start  -->
+            <Grid BackgroundColor="#006442">
+                <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" Android="10, 0, 10, 0" iOS="10, 20, 10, 0" />
+                </Grid.Padding>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" 
+                    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image Aspect="Fill" HeightRequest="30" Source="ic_back.png" 
+                        VerticalOptions="CenterAndExpand" WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnClickBack}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" 
+                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label FontSize="18" FontAttributes="None"
+                        Text="Restaurant Detail" TextColor="White" 
+                        VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
+            <!--  Top Bar End  -->
+            <Grid RowSpacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Orientation="Vertical" Spacing="10"
+                    BindingContext="{Binding RecievedRestaurant}" BackgroundColor="Transparent" 
+                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    
+                    <StackLayout Spacing="10" Padding="5">
+                        <ffimageloading:CachedImage x:Name="imageView" Source="{Binding image}" 
+                            LoadingPlaceholder="loading.gif"
+                            ErrorPlaceholder="img_na_placeholder.png" 
+                            Aspect="AspectFill" HeightRequest="200"
+                            HorizontalOptions="FillAndExpand" />
+                        
+                        <Controls:LongLabel Text="View More" TextColor="Blue" 
+                            FontSize="15" FontAttributes="Bold" FontFamily="Arial" 
+                            LineBreakMode="WordWrap"
+                            HorizontalOptions="EndAndExpand">
+                            <Controls:LongLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnClickViewMore" />
+                            </Controls:LongLabel.GestureRecognizers>
+                        </Controls:LongLabel>
+                    </StackLayout>
+                    
+                    <ScrollView>
+                        <StackLayout Spacing="10" Padding="10">
+                            <StackLayout Spacing="5">
+                                <Label Text="{Binding name}" TextColor="Black" 
+                                    FontSize="20" FontFamily="Arial" 
+                                    HorizontalOptions="StartAndExpand" />
+                                
+                                <Controls:LongLabel Text="{Binding description}" TextColor="Black" 
+                                    FontSize="15" FontFamily="Arial" LineBreakMode="WordWrap" 
+                                    HorizontalOptions="StartAndExpand" />
+                                
+                                <BoxView HeightRequest="1" BackgroundColor="{StaticResource border_color}" 
+                                    HorizontalOptions="FillAndExpand" />
+                                
+                                <StackLayout Orientation="Horizontal" 
+                                    HorizontalOptions="StartAndExpand">
+                                    <Image Source="ic_add.png" HeightRequest="30" Aspect="AspectFit" 
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding address}" TextColor="Black" 
+                                        FontSize="15" FontFamily="Arial" 
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" 
+                                    HorizontalOptions="StartAndExpand">
+                                    <Image Source="ic_near_by.png" HeightRequest="20" Aspect="AspectFit" 
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding near_by}" TextColor="Black" 
+                                        FontSize="15" FontFamily="Arial" 
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                                
+                                <StackLayout Orientation="Horizontal" 
+                                    HorizontalOptions="StartAndExpand">
+                                    <Image Source="ic_phone_num.png" Aspect="AspectFit" 
+                                        HeightRequest="15" WidthRequest="30"
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding contact_numb}" TextColor="Black" 
+                                        FontSize="15" FontFamily="Arial" 
+                                        VerticalOptions="CenterAndExpand" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnClickPhone" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" 
+                                    HorizontalOptions="StartAndExpand">
+                                    <Image Source="ic_phone_num.png" Aspect="AspectFit" 
+                                        HeightRequest="15" WidthRequest="30"
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding contact_numb2}" TextColor="Black" 
+                                        FontSize="15" FontFamily="Arial" 
+                                        VerticalOptions="CenterAndExpand" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnClickPhone2" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                
+                                <StackLayout Orientation="Horizontal" 
+                                    HorizontalOptions="StartAndExpand">
+                                    <Image Source="ic_web.png" HeightRequest="30" Aspect="AspectFit" 
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding website}" TextColor="Blue" 
+                                        FontSize="15" FontFamily="Arial" 
+                                        VerticalOptions="CenterAndExpand" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnClickUrl" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" 
+                                    HorizontalOptions="StartAndExpand">
+                                    <Image Source="ic_web.png" HeightRequest="30" Aspect="AspectFit" 
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding email}" TextColor="Black" 
+                                        FontSize="15" FontFamily="Arial" 
+                                    VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                                
+                                <BoxView HeightRequest="1" BackgroundColor="{StaticResource border_color}" 
+                                    HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <StackLayout HeightRequest="40"
+                                BackgroundColor="#006442"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal" 
+                                    HorizontalOptions="Center" 
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label Text="See The Route" YAlign="Center" XAlign="Center" 
+                                        TextColor="White" FontSize="15" FontAttributes="Bold" />
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnClickGetDirections" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>

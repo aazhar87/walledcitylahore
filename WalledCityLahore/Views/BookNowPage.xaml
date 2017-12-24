@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    prism:ViewModelLocator.AutowireViewModel="True" 
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+    xmlns:Controls="clr-namespace:WalledCityLahore.Widgets;assembly=WalledCityLahore" 
+    x:Class="WalledCityLahore.Views.BookNowPage" 
+    BackgroundColor="White">
+    <Grid BackgroundColor="White">
+        <StackLayout Spacing="0" BackgroundColor="White">
+            <!--  Top Bar Start  -->
+            <Grid BackgroundColor="#fee61f">
+                <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" Android="10, 0, 10, 0" iOS="10, 20, 10, 0" />
+                </Grid.Padding>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" 
+                    HorizontalOptions="StartAndExpand" 
+                    VerticalOptions="CenterAndExpand">
+                    <Image Aspect="Fill" Source="ic_back.png" 
+                        HeightRequest="30" WidthRequest="30"
+                        VerticalOptions="CenterAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnClickBack}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" 
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand">
+                    <Label FontSize="18" FontAttributes="None" 
+                        Text="Booking Detail" TextColor="White" 
+                        VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
+            <!--  Top Bar End  -->
+            <Grid RowSpacing="0" BackgroundColor="White"
+                VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Vertical" 
+                    Spacing="10" Padding="20"
+                    BackgroundColor="Transparent" 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand">
+
+                    <StackLayout Spacing="5">
+                        <Label Text="Enter your name" TextColor="Gray"
+                            FontSize="13" FontFamily="Arial"
+                            HorizontalOptions="StartAndExpand"/>
+                        <Entry Text="{Binding Name}" TextColor="Black"
+                            FontSize="15" FontFamily="Arial" HeightRequest="40"
+                            Placeholder="Enter Name" PlaceholderColor="Gray" Keyboard="Text"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="5">
+                        <Label Text="Enter phone number" TextColor="Gray"
+                            FontSize="13" FontFamily="Arial"
+                            HorizontalOptions="StartAndExpand"/>
+                        <Entry Text="{Binding Phone}" TextColor="Black"
+                            FontSize="15" FontFamily="Arial" HeightRequest="40"
+                            Placeholder="Enter Contact Number" PlaceholderColor="Gray" Keyboard="Telephone"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                   
+
+                    <StackLayout Spacing="5">
+                        <Label Text="Enter number of persons" TextColor="Gray"
+                            FontSize="13" FontFamily="Arial"
+                            HorizontalOptions="StartAndExpand"/>
+                        <Entry Text="{Binding Persons}" TextColor="Black"
+                            FontSize="15" FontFamily="Arial" HeightRequest="40"
+                            Placeholder="Enter Number of Persons" PlaceholderColor="Gray" Keyboard="Numeric"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="5">
+                        <Label Text="Enter your email" TextColor="Gray"
+                            FontSize="13" FontFamily="Arial"
+                            HorizontalOptions="StartAndExpand"/>
+                        <Entry Text="{Binding Email}" TextColor="Black"
+                            FontSize="15" FontFamily="Arial" HeightRequest="40"
+                            Placeholder="Enter Email Address" PlaceholderColor="Gray" Keyboard="Email"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+
+                    <StackLayout Spacing="5">
+                        <Label Text="Select Date of Booking" TextColor="Gray"
+                            FontSize="13" FontFamily="Arial"
+                            HorizontalOptions="StartAndExpand"/>
+                        <DatePicker TextColor="Black" 
+                            Format="dd-MM-yyyy" HeightRequest="40"
+                            Date="{Binding SelectedDate}"
+                            MinimumDate="{Binding StartDate}"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="5">
+                        <Label Text="Select Time of Booking" TextColor="Gray"
+                            FontSize="13" FontFamily="Arial"
+                            HorizontalOptions="StartAndExpand"/>
+                        <Picker Title="Time of Booking" TextColor="Black"
+                            ItemsSource="{Binding BookingTimes}"
+                            SelectedIndex="{Binding SelectedTimeIndex}"
+                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    
+                </StackLayout>
+                
+                <StackLayout Grid.Row="1" HeightRequest="50" Margin="10"
+                    BackgroundColor="{Binding RecievedBooking.background}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="EndAndExpand">
+                    <StackLayout Orientation="Horizontal" Padding="20,10,20,10"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Label Text="Book Now" TextColor="White" 
+                            FontSize="18" FontAttributes="Bold" FontFamily="Arial"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnClickBookNow}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>

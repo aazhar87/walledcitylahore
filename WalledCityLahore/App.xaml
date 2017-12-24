@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms" 
+    x:Class="WalledCityLahore.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  colors  -->
+            <Color x:Key="PrimaryColor">#000000</Color>
+            <Color x:Key="light_grey_text">#C0C0C0</Color>
+            <Color x:Key="dark_grey_text">#99999D</Color>
+            <Color x:Key="grey_text">#3D3D3D</Color>
+            <Color x:Key="border_color">#CBCACA</Color>
+            <Color x:Key="GreyColor">#bfbfbf</Color>
+            <!--  styles  -->
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>
